@@ -37,7 +37,9 @@ public class ContactFormTest {
 
 	    @DataProvider(name = "formData")
 	    public Object[][] getFormData() {
-	        return ExcelUtils.readExcelData("D:\\Downloads\\TestData (1).xlsx", "Sheet1");
+	    	  String filePath = System.getProperty("user.dir") + "/src/test/resources/TestData (1).xlsx";
+	    	    String sheetName = "Sheet1";  // or make it a system property if needed
+	    	    return ExcelUtils.readExcelData(filePath, sheetName);
 
 	    }
 
