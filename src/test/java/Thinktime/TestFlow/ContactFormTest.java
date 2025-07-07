@@ -19,12 +19,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class ContactFormTest {
 
 	  WebDriver driver;
-
 	  @BeforeMethod
 	  public void setUp() {
 	      WebDriverManager.chromedriver().setup();
 	      ChromeOptions options = new ChromeOptions();
 	      options.addArguments("--remote-allow-origins=*");
+	      options.addArguments("--headless=new"); // Enable headless mode (new headless for Chrome 109+)
+	      options.addArguments("--window-size=1920,1080"); // Optional: for consistent layout
+	      options.addArguments("--disable-gpu"); // Recommended for headless in some environments
+
 	      driver = new ChromeDriver(options);
 	      driver.manage().window().maximize();
 	      driver.get("https://thinktime.in/");
